@@ -29,3 +29,5 @@ correct_trajanje(buss) %>%
   # select(trajanje.put.minute, everything()) %>% 
   arrange(trajanje.put) %>% 
   View()
+
+# mala promjena u masteru #
