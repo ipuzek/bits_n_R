@@ -28,6 +28,6 @@ correct_trajanje <- function(x.df) {
 correct_trajanje(buss) %>% 
   mutate(trajanje.put = round(trajanje.put, 1)) %>% 
   # mutate(trajanje.put.minute = trajanje.put / dminutes()) %>% 
-  # select(trajanje.put.minute, everything()) %>% 
+  select(trajanje.put.minute, polazak, cijena) %>% 
   # arrange(trajanje.put) %>% 
   View()
