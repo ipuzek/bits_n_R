@@ -31,5 +31,3 @@ correct_trajanje(buss) %>%
   select(trajanje.put.minute, polazak, cijena) %>% 
   # arrange(trajanje.put) %>% 
   View()
-
-jea
