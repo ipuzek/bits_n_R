@@ -3,9 +3,11 @@ library(lubridate)
 library(dplyr)
 
 # read & wrangle #
-buss <- readxl::read_excel("Desktop/busevi.xlsx")
-names(buss) <- c("polazak", "dolazak", "peron", "prijevoznik")
+buss <- readxl::read_excel("Desktop/busevi.xlsx", sheet = "ak_zagreb")
+names(buss) <- c("polazak", "dolazak", "prijevoznik", "veza", "stanice", "dostava", "cijena", "cijene", "kupi")
 
+library(stringr)
+buss$dolazak <- str_split_fixed(buss$dolazak, " ", n = 2)[,2]
 
 correct_trajanje <- function(x.df) {
   
@@ -26,8 +28,8 @@ correct_trajanje <- function(x.df) {
 correct_trajanje(buss) %>% 
   mutate(trajanje.put = round(trajanje.put, 1)) %>% 
   # mutate(trajanje.put.minute = trajanje.put / dminutes()) %>% 
-  # select(trajanje.put.minute, everything()) %>% 
-  arrange(trajanje.put) %>% 
+  select(trajanje.put.minute, polazak, cijena) %>% 
+  # arrange(trajanje.put) %>% 
   View()
 
 # mala promjena u masteru #
